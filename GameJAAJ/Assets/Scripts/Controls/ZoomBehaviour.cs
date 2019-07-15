@@ -6,8 +6,8 @@ public class ZoomBehaviour : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
 
-
-    private float fovTransitionTime = 0.3f;
+    [SerializeField] private float zoomFactor = 2;
+    [SerializeField] private float zoomTransitionTime = 0.3f;
     private Coroutine zoom;
     private bool isZoom;
     private float oldFOV;
@@ -41,9 +41,9 @@ public class ZoomBehaviour : MonoBehaviour
     private IEnumerator Zoom()
     {
         var startTime = Time.time;
-        while(Time.time < startTime + fovTransitionTime)
+        while(Time.time < startTime + zoomTransitionTime)
         {
-            playerCamera.fieldOfView = Mathf.Lerp(oldFOV, oldFOV/2f, (Time.time-startTime) / fovTransitionTime);
+            playerCamera.fieldOfView = Mathf.Lerp(oldFOV, oldFOV/zoomFactor, (Time.time-startTime) / zoomTransitionTime);
             Debug.Log("Aumentando zoom: " + playerCamera.fieldOfView);
             yield return new WaitForEndOfFrame();
         }
@@ -52,9 +52,9 @@ public class ZoomBehaviour : MonoBehaviour
     private IEnumerator Unzoom()
     {
         var startTime = Time.time;
-        while(Time.time < startTime + fovTransitionTime)
+        while(Time.time < startTime + zoomTransitionTime)
         {
-            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, oldFOV, (Time.time-startTime) /fovTransitionTime);
+            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, oldFOV, (Time.time-startTime) /zoomTransitionTime);
             yield return new WaitForEndOfFrame();
         }
     }

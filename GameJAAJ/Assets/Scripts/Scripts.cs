@@ -22,7 +22,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
-    public class FirstPersonController : MonoBehaviour
+    public class FirstPersonController2 : MonoBehaviour
     {
         [Header("Raycast")]
         [SerializeField] Image crosshair;
@@ -32,8 +32,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] public bool AmIUsingRaycast;
         [SerializeField] private Vector3 RayOrigin;
         RaycastHit hit;
-
-
 
 
 
@@ -119,8 +117,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         private void Update()
         {
-
-
             // Aqui começa o Raycast
 
             if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward , out hit, distance))
@@ -145,15 +141,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 AmIUsingRaycast = false;
             }
 
-
-
-
-
-
-
-
             // end Raycast
-                if (!isWalking2)
+            if (!isWalking2)
             {
                 camAnim.SetBool("walk", true);
             }

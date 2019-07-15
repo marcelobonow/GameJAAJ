@@ -6,11 +6,11 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class AdvancedMovementBehaviour : MonoBehaviour
 {
-    public FirstPersonController firstPersonController;
+    [SerializeField] public FirstPersonController firstPersonController;
 
     [SerializeField] private Image crosshair;
     [SerializeField] private CharacterController characterController;
-    [SerializeField] private bool isCrounch;
+    [SerializeField] private bool isCrouch;
 
     private float oldWalkSpeed;
     private float oldRunSpeed;
@@ -18,24 +18,24 @@ public class AdvancedMovementBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        
+        firstPersonController = GetComponent<FirstPersonController>();
     }
 
     private void Update()
     {
-        if(Input.GetButton("Crounch") && !isCrounch)
+        if(Input.GetButton("Crouch") && !isCrouch)
         {
-            isCrounch = true;
-            Crounch();
+            isCrouch = true;
+            Crouch();
         }
-        else if(!Input.GetButton("Crounch") && isCrounch)
+        else if(!Input.GetButton("Crouch") && isCrouch)
         {
-            isCrounch = false;
-            ResetCrounch();
+            isCrouch = false;
+            ResetCrouch();
         }
     }
 
-    private void Crounch()
+    private void Crouch()
     {
         oldWalkSpeed = firstPersonController.m_WalkSpeed;
         oldRunSpeed = firstPersonController.m_RunSpeed;
@@ -46,7 +46,7 @@ public class AdvancedMovementBehaviour : MonoBehaviour
         firstPersonController.m_RunSpeed *= 0.7f;
         crosshair.GetComponent<Image>().color = Color.green;
     }
-    private void ResetCrounch()
+    private void ResetCrouch()
     {
         firstPersonController.m_WalkSpeed = oldWalkSpeed;
         firstPersonController.m_RunSpeed = oldRunSpeed;

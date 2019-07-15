@@ -305,7 +305,7 @@ MonoBehaviour:
   firstPersonController: {fileID: 11400000}
   crosshair: {fileID: 0}
   characterController: {fileID: 14300000}
-  isCrounch: 0
+  isCrouch: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

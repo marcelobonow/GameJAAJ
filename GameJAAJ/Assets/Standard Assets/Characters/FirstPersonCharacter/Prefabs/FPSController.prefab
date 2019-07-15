@@ -320,6 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2000000}
+  zoomFactor: 2
+  zoomTransitionTime: 0.3
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,6 @@ public class ZoomBehaviour : MonoBehaviour
         while(Time.time < startTime + zoomTransitionTime)
         {
             playerCamera.fieldOfView = Mathf.Lerp(oldFOV, oldFOV/zoomFactor, (Time.time-startTime) / zoomTransitionTime);
-            Debug.Log("Aumentando zoom: " + playerCamera.fieldOfView);
             yield return new WaitForEndOfFrame();
         }
     }

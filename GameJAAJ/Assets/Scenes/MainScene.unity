@@ -8891,11 +8891,6 @@ PrefabInstance:
       propertyPath: interactionController
       value: 
       objectReference: {fileID: 1690092476}
-    - target: {fileID: 8336044588957944074, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 3}
-      propertyPath: timeToHold
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 2607703373447735079, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 3}
       propertyPath: m_IsActive

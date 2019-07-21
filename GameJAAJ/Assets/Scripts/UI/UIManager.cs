@@ -16,6 +16,5 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
-    public static void EnableInteractMessage() => instance.interactableText.gameObject.SetActive(true);
-    public static void DisableInteractMessage() => instance.interactableText.gameObject.SetActive(false);
+    public static void SetInteractMessage(bool active) => instance.interactableText.gameObject.SetActive(active);
 }

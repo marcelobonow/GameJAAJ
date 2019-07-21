@@ -47,14 +47,19 @@ public class Interactor : MonoBehaviour
     {
         var interactableObject = rayCastInfo.transform.GetComponent<InteractableObject>().gameObject;
         objectHolding = interactableObject;
+        objectHolding.GetComponent<Rigidbody>().useGravity = false;
         oldObjectHoldingTransform = objectHolding.transform.parent;
         oldObjectRotation = objectHolding.transform.rotation;
         objectHolding.transform.SetParent(firstPersonCamera.transform);
     }
     private void DropObject()
     {
-        objectHolding?.transform.SetParent(oldObjectHoldingTransform);
-        objectHolding = null;
+        if(objectHolding != null)
+        {
+            objectHolding.transform.SetParent(oldObjectHoldingTransform);
+            objectHolding.GetComponent<Rigidbody>().useGravity = true;
+            objectHolding = null;
+        }
     }
 
     private void OnInteract(RaycastHit rayCastInfo)

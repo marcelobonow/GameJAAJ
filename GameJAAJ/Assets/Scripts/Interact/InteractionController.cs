@@ -12,6 +12,8 @@ public class InteractionController : MonoBehaviour
     private Vector3 firstMousePosition = Vector3.zero;
     private bool clicked = false;
 
+    private void Awake() => enabled = false;
+
     public void EnableInteraction(GameObject interactableObject)
     {
         enabled = true;

@@ -49,22 +49,23 @@ LightmapSettings:
     serializedVersion: 2
     m_BounceScale: 1
     m_IndirectOutputScale: 1
-    m_AlbedoBoost: 1
+    m_AlbedoBoost: 1.45
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 12
-    m_Resolution: 2
-    m_BakeResolution: 40
+    m_Resolution: 4
+    m_BakeResolution: 20
     m_AtlasSize: 128
-    m_AO: 0
+    m_AO: 1
     m_AOMaxDistance: 1
-    m_CompAOExponent: 1
+    m_CompAOExponent: 1.5
     m_CompAOExponentDirect: 0
     m_ExtractAmbientOcclusion: 0
     m_Padding: 2
-    m_LightmapParameters: {fileID: 0}
+    m_LightmapParameters: {fileID: 15201, guid: 0000000000000000f000000000000000,
+      type: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_FinalGather: 0
@@ -98,7 +99,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 112000000, guid: fd04139220746a149aa4cca4d55608e2,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7738,12 +7739,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517395940}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &526686267 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1517410650570602731, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 679629808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &529361288
 GameObject:
   m_ObjectHideFlags: 0
@@ -8663,6 +8658,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8336044588957944074, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: interactionController
+      value: 
+      objectReference: {fileID: 1690092476}
+    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2607703373447735079, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 3}
       propertyPath: m_IsActive
@@ -8677,10 +8681,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_Name
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27604,7 +27604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b71ba1004b0f644bca453c189b6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1418164772
+--- !u!114 &1418164773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27613,27 +27613,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1418164770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f67c37614ad7041984ddd8b4e546c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bb1aeafc1d76f14baf2c087abe8f5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionDistance: 5
-  interactItemSpawnPoint: {fileID: 2950874919807973054}
-  characterController: {fileID: 1418164777}
-  interactionController: {fileID: 1690092476}
-  firstPersonCamera: {fileID: 1765222506}
-  interactCamera: {fileID: 526686267}
---- !u!114 &1418164777 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 679629808}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418164770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  contrastInDetectiveMode: 0.5
 --- !u!1 &1420747718
 GameObject:
   m_ObjectHideFlags: 0
@@ -30385,12 +30368,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760033883}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &1765222506 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 679629808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1789084547
 GameObject:
   m_ObjectHideFlags: 0
@@ -33015,9 +32992,3 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: cd37e4ae71cc1b94ab2742c134bd76d2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a730ceb232238dd4ea2ac1a4e1cfb1fb, type: 3}
---- !u!1 &2950874919807973054 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2709159071481383325, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 679629808}
-  m_PrefabAsset: {fileID: 0}

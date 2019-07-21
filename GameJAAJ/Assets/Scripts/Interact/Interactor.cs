@@ -16,7 +16,6 @@ public class Interactor : MonoBehaviour
     private GameObject objectHolding;
     private Transform oldObjectHoldingTransform;
     private Quaternion oldObjectRotation;
-    private bool holdingObject;
     private bool interacting = false;
 
     private void Awake() => SetObjectsState();
@@ -31,8 +30,11 @@ public class Interactor : MonoBehaviour
 
         UIManager.SetInteractMessage(interactable);
 
-        if(interactable && Input.GetButtonDown("Interact"))
+        if(interactable && !interacting && Input.GetButtonDown("Interact"))
             OnInteract(rayCastInfo);
+        else if(interacting && Input.GetButtonDown("Interact"))
+            EndInteraction();
+
         if(Input.GetButtonDown("HoldObject") && interactable && !interacting)
             HoldObject(rayCastInfo);
         if(Input.GetButtonUp("HoldObject"))
@@ -45,7 +47,7 @@ public class Interactor : MonoBehaviour
     }
     private void HoldObject(RaycastHit rayCastInfo)
     {
-        var interactableObject = rayCastInfo.transform.GetComponent<InteractableObject>().gameObject;
+        var interactableObject = rayCastInfo.transform.gameObject;
         objectHolding = interactableObject;
         objectHolding.GetComponent<Rigidbody>().useGravity = false;
         oldObjectHoldingTransform = objectHolding.transform.parent;
@@ -65,10 +67,12 @@ public class Interactor : MonoBehaviour
     private void OnInteract(RaycastHit rayCastInfo)
     {
         interacting = true;
-        var interactableObject = rayCastInfo.transform.GetComponent<InteractableObject>();
-        interactableObject.transform.localPosition = Vector3.zero;
-        var interactionObject = Instantiate(interactableObject, interactItemSpawnPoint.transform);
-        interactionController.EnableInteraction(interactionObject.gameObject);
+        interactionController.EnableInteraction(rayCastInfo.transform.gameObject, interactItemSpawnPoint.transform);
+    }
+    private void EndInteraction()
+    {
+        interacting = false;
+        interactionController.EndInteraction();
     }
     private void SetObjectsState()
     {

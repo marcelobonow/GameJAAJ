@@ -6,6 +6,9 @@ public class InteractionController : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 5f;
 
+    private Transform oldObjectInteractedParent;
+    private Vector3 oldObjectInteractedPosition;
+
     private GameObject interactableObject = null;
     private float rotationX = 0;
     private float rotationY = 0;
@@ -14,10 +17,26 @@ public class InteractionController : MonoBehaviour
 
     private void Awake() => enabled = false;
 
-    public void EnableInteraction(GameObject interactableObject)
+    public void EnableInteraction(GameObject interactableObject, Transform itemInspectionHolder)
     {
         enabled = true;
+        oldObjectInteractedPosition = interactableObject.transform.position;
+        oldObjectInteractedParent = interactableObject.transform.parent;
+        interactableObject.transform.SetParent(itemInspectionHolder);
+        interactableObject.transform.localPosition = Vector3.zero;
+
         this.interactableObject = interactableObject;
+        interactableObject.GetComponent<Rigidbody>().useGravity = false;
+    }
+    public void EndInteraction()
+    {
+        enabled = false;
+        interactableObject.transform.SetParent(oldObjectInteractedParent);
+        interactableObject.transform.position = oldObjectInteractedPosition;
+        interactableObject.GetComponent<Rigidbody>().useGravity = true;
+
+        rotationX = 0;
+        rotationY = 0;
     }
 
     private void Update()

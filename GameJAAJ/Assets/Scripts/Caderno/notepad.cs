@@ -10,7 +10,8 @@ public class notepad : MonoBehaviour {
 
     }
 	
-	void Update () {
+	void Update () 
+{
         if (Input.GetButtonDown("Notepad"))
         {
             if (isActived)

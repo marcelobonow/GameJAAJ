@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: f686bc61e919dac41a9602b3e4d08a25
+timeCreated: 1453113739
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ProjectorLightBase_LOD0
+    100004: ProjectorLightBase_LOD1
+    100006: ProjectorLightBase_LOD2
+    100008: ProjectorLightBase_LOD3
+    100010: ProjectorLightSource_LOD0
+    100012: ProjectorLightSource_LOD1
+    100014: ProjectorLightSource_LOD2
+    100016: ProjectorLightSource_LOD3
+    400000: //RootNode
+    400002: ProjectorLightBase_LOD0
+    400004: ProjectorLightBase_LOD1
+    400006: ProjectorLightBase_LOD2
+    400008: ProjectorLightBase_LOD3
+    400010: ProjectorLightSource_LOD0
+    400012: ProjectorLightSource_LOD1
+    400014: ProjectorLightSource_LOD2
+    400016: ProjectorLightSource_LOD3
+    2300000: ProjectorLightBase_LOD0
+    2300002: ProjectorLightBase_LOD1
+    2300004: ProjectorLightBase_LOD2
+    2300006: ProjectorLightBase_LOD3
+    2300008: ProjectorLightSource_LOD0
+    2300010: ProjectorLightSource_LOD1
+    2300012: ProjectorLightSource_LOD2
+    2300014: ProjectorLightSource_LOD3
+    3300000: ProjectorLightBase_LOD0
+    3300002: ProjectorLightBase_LOD1
+    3300004: ProjectorLightBase_LOD2
+    3300006: ProjectorLightBase_LOD3
+    3300008: ProjectorLightSource_LOD0
+    3300010: ProjectorLightSource_LOD1
+    3300012: ProjectorLightSource_LOD2
+    3300014: ProjectorLightSource_LOD3
+    4300000: ProjectorLightSource_LOD3
+    4300002: ProjectorLightBase_LOD3
+    4300004: ProjectorLightBase_LOD2
+    4300006: ProjectorLightSource_LOD2
+    4300008: ProjectorLightSource_LOD1
+    4300010: ProjectorLightBase_LOD1
+    4300012: ProjectorLightBase_LOD0
+    4300014: ProjectorLightSource_LOD0
+    20500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

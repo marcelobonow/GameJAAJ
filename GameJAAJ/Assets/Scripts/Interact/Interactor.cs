@@ -6,12 +6,17 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private float interactionDistance;
+    [SerializeField] private float holdObjectDistance;
     [SerializeField] private GameObject interactItemSpawnPoint;
     [SerializeField] private FirstPersonController characterController;
     [SerializeField] private InteractionController interactionController;
     [SerializeField] private Camera firstPersonCamera;
     [SerializeField] private Camera interactCamera;
 
+    private GameObject objectHolding;
+    private Transform oldObjectHoldingTransform;
+    private Quaternion oldObjectRotation;
+    private bool holdingObject;
     private bool interacting = false;
 
     private void Awake() => SetObjectsState();
@@ -28,7 +33,28 @@ public class Interactor : MonoBehaviour
 
         if(interactable && Input.GetButtonDown("Interact"))
             OnInteract(rayCastInfo);
+        if(Input.GetButtonDown("HoldObject") && interactable && !interacting)
+            HoldObject(rayCastInfo);
+        if(Input.GetButtonUp("HoldObject"))
+            DropObject();
+
+        if(objectHolding != null)
+            objectHolding.transform.rotation = oldObjectRotation;
+
         SetObjectsState();
+    }
+    private void HoldObject(RaycastHit rayCastInfo)
+    {
+        var interactableObject = rayCastInfo.transform.GetComponent<InteractableObject>().gameObject;
+        objectHolding = interactableObject;
+        oldObjectHoldingTransform = objectHolding.transform.parent;
+        oldObjectRotation = objectHolding.transform.rotation;
+        objectHolding.transform.SetParent(firstPersonCamera.transform);
+    }
+    private void DropObject()
+    {
+        objectHolding?.transform.SetParent(oldObjectHoldingTransform);
+        objectHolding = null;
     }
 
     private void OnInteract(RaycastHit rayCastInfo)
@@ -38,7 +64,6 @@ public class Interactor : MonoBehaviour
         interactableObject.transform.localPosition = Vector3.zero;
         var interactionObject = Instantiate(interactableObject, interactItemSpawnPoint.transform);
         interactionController.EnableInteraction(interactionObject.gameObject);
-
     }
     private void SetObjectsState()
     {

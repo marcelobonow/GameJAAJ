@@ -8,6 +8,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float interactionDistance;
     [SerializeField] private GameObject interactItemSpawnPoint;
     [SerializeField] private FirstPersonController characterController;
+    [SerializeField] private InteractionController interactionController;
     [SerializeField] private Camera firstPersonCamera;
     [SerializeField] private Camera interactCamera;
 
@@ -35,7 +36,9 @@ public class Interactor : MonoBehaviour
         interacting = true;
         var interactableObject = rayCastInfo.transform.GetComponent<InteractableObject>();
         interactableObject.transform.localPosition = Vector3.zero;
-        Instantiate(interactableObject, interactItemSpawnPoint.transform);
+        var interactionObject = Instantiate(interactableObject, interactItemSpawnPoint.transform);
+        interactionController.EnableInteraction(interactionObject.gameObject);
+
     }
     private void SetObjectsState()
     {

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3717661947087011730}
   - component: {fileID: 8903078251841587680}
   - component: {fileID: 8336044588957944074}
+  - component: {fileID: 7150873143296315820}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -342,6 +343,21 @@ MonoBehaviour:
   interactionController: {fileID: 0}
   firstPersonCamera: {fileID: 2000000}
   interactCamera: {fileID: 1517410650570602731}
+--- !u!114 &7150873143296315820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb1aeafc1d76f14baf2c087abe8f5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contrastInDetectiveMode: 0.5
+  maxTimeInDetectiveMode: 2
+  timeToRecover: 4
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

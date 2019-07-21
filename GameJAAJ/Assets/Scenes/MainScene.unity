@@ -5517,6 +5517,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &72461609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72461607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735ac3900a5a23c469edb6895346ff8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  keyId: 0
 --- !u!1 &83246330
 GameObject:
   m_ObjectHideFlags: 0
@@ -32414,6 +32428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClosed: 1
+  keyToOpen: {fileID: 0}
   timeToOpen: 1
   door: {fileID: 638960020}
   openRotation: {x: 0, y: 0, z: 0}

@@ -8,7 +8,6 @@ public enum ItemTypes
 {
     key,
     lighter,
-
 }
 
 public class InteractableObject : MonoBehaviour

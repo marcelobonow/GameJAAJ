@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private bool isClosed = true;
+    [SerializeField] private int keyToOpen;
     [SerializeField] private float timeToOpen = 1;
     [SerializeField] private GameObject door;
     [SerializeField] private Vector3 openRotation;
@@ -26,6 +27,7 @@ public class OpenDoor : MonoBehaviour
             door.transform.rotation = Quaternion.Euler(Vector3.Lerp(closedRotation, openRotation, (Time.time-initialTime)/timeToOpen));
             yield return new WaitForEndOfFrame();
         }
+        isClosed = false;
     }
     public IEnumerator Close()
     {
@@ -42,9 +44,9 @@ public class OpenDoor : MonoBehaviour
         if(collision.transform.CompareTag("Interactable"))
         {
             var interactableObject = collision.transform.GetComponent<InteractableObject>();
-            if(interactableObject.itemType == ItemTypes.key)
+            if(interactableObject.itemType == ItemTypes.key
+                && interactableObject.GetComponent<Key>().keyId == keyToOpen)
             {
-                ///Testar pra ver se é a chave certa
                 StartCoroutine(Open());
                 Destroy(collision.gameObject);
             }

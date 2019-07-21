@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionDistance: 5
+  timeToHold: 0.25
   interactItemSpawnPoint: {fileID: 2709159071481383325}
   characterController: {fileID: 11400000}
   interactionController: {fileID: 0}
@@ -576,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c52e9be6437e0e4d84ccdf96a6f4ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 0}
+  itemType: 0
 --- !u!1 &6744919953218396548
 GameObject:
   m_ObjectHideFlags: 0

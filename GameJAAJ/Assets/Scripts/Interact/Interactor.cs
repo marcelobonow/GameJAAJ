@@ -6,7 +6,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private float interactionDistance;
-    [SerializeField] private float holdObjectDistance;
+    [SerializeField] private float timeToHold = 1f;
     [SerializeField] private GameObject interactItemSpawnPoint;
     [SerializeField] private FirstPersonController characterController;
     [SerializeField] private InteractionController interactionController;
@@ -16,6 +16,8 @@ public class Interactor : MonoBehaviour
     private GameObject objectHolding;
     private Transform oldObjectHoldingTransform;
     private Quaternion oldObjectRotation;
+    private float clickTime;
+
     private bool interacting = false;
 
     private void Awake() => SetObjectsState();
@@ -28,17 +30,27 @@ public class Interactor : MonoBehaviour
             interactionDistance)
             && rayCastInfo.transform.CompareTag("Interactable");
 
-        UIManager.SetInteractMessage(interactable);
+        UIManager.SetInteractMessage(interactable && objectHolding == null && !interacting);
 
         if(interactable && !interacting && Input.GetButtonDown("Interact"))
-            OnInteract(rayCastInfo);
-        else if(interacting && Input.GetButtonDown("Interact"))
-            EndInteraction();
-
-        if(Input.GetButtonDown("HoldObject") && interactable && !interacting)
+        {
+            clickTime = Time.time;
+        }
+        if(Input.GetButtonUp("Interact"))
+        {
+            if(objectHolding != null)
+                DropObject();
+            else if(interacting)
+                EndInteraction();
+            else if(interactable && !interacting)
+                OnInteract(rayCastInfo);
+        }
+        if(Input.GetButton("Interact")
+            && objectHolding == null
+            && interactable
+            && !interacting
+            && Time.time > clickTime + timeToHold)
             HoldObject(rayCastInfo);
-        if(Input.GetButtonUp("HoldObject"))
-            DropObject();
 
         if(objectHolding != null)
             objectHolding.transform.rotation = oldObjectRotation;

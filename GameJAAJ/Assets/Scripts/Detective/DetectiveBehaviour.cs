@@ -12,27 +12,43 @@ public class DetectiveBehaviour : MonoBehaviour
     private bool inDetectiveMode = false;
     private float timeUsedInDetectiveMode = 0f;
 
+    private void Start()
+    {
+        SetDetectiveMode(false, 1f);
+        UIManager.SetDetectiveModeTimeToRecharge("Ready", Color.green);
+    }
+
     void Update()
     {
-        if(Input.GetButton("Detective") && timeUsedInDetectiveMode <= 0)
-            SetDetectiveMode(true, contrastInDetectiveMode);
-        if(Input.GetButtonUp("Detective") || timeUsedInDetectiveMode > maxTimeInDetectiveMode)
-            SetDetectiveMode(false, 1f);
+        UIManager.SetDetectiveModeTimeRemaning(maxTimeInDetectiveMode - timeUsedInDetectiveMode);
+        UIManager.SetDetectiveModeTimeToRecharge(
+                Mathf.Ceil(timeUsedInDetectiveMode * timeToRecover/maxTimeInDetectiveMode).ToString(),
+                Color.red);
 
         if(inDetectiveMode)
             timeUsedInDetectiveMode += Time.deltaTime;
-        else if(timeUsedInDetectiveMode > 0)
+        else
         {
-            timeUsedInDetectiveMode -= Time.deltaTime * maxTimeInDetectiveMode/timeToRecover;
-            if(timeUsedInDetectiveMode < 0)
+            if(timeUsedInDetectiveMode > 0)
+                timeUsedInDetectiveMode -= Time.deltaTime * maxTimeInDetectiveMode/timeToRecover;
+            if(timeUsedInDetectiveMode <= 0)
+            {
                 timeUsedInDetectiveMode = 0;
+                UIManager.SetDetectiveModeTimeToRecharge("Ready", Color.green);
+            }
         }
+
+        if(Input.GetButtonDown("Detective") && timeUsedInDetectiveMode <= 0)
+            SetDetectiveMode(true, contrastInDetectiveMode);
+        if(Input.GetButtonUp("Detective") || timeUsedInDetectiveMode > maxTimeInDetectiveMode)
+            SetDetectiveMode(false, 1f);
     }
 
     private void SetDetectiveMode(bool state, float contrast)
     {
         inDetectiveMode = state;
         SetContrast(contrast);
+        UIManager.SetEnableDetectiveMode(state);
     }
 
     private void SetContrast(float newContrast)

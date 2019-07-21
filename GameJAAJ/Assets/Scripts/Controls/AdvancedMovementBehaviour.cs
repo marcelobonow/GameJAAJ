@@ -44,13 +44,13 @@ public class AdvancedMovementBehaviour : MonoBehaviour
         characterController.height *= 0.65f;
         firstPersonController.m_WalkSpeed *= 0.7f;
         firstPersonController.m_RunSpeed *= 0.7f;
-        crosshair.GetComponent<Image>().color = Color.green;
+        UIManager.SetCrosshairColor(Color.green);
     }
     private void ResetCrouch()
     {
         firstPersonController.m_WalkSpeed = oldWalkSpeed;
         firstPersonController.m_RunSpeed = oldRunSpeed;
         characterController.height = oldHeight;
-        crosshair.GetComponent<Image>().color = Color.white;
+        UIManager.SetCrosshairColor(Color.white);
     }
 }

@@ -80,11 +80,13 @@ public class Interactor : MonoBehaviour
     {
         interacting = true;
         interactionController.EnableInteraction(rayCastInfo.transform.gameObject, interactItemSpawnPoint.transform);
+        UIManager.SetEnableCrosshair(false);
     }
     private void EndInteraction()
     {
         interacting = false;
         interactionController.EndInteraction();
+        UIManager.SetEnableCrosshair(true);
     }
     private void SetObjectsState()
     {
@@ -93,5 +95,6 @@ public class Interactor : MonoBehaviour
         characterController.enabled = !interacting;
         Cursor.visible = interacting;
         Cursor.lockState = interacting ? CursorLockMode.None : CursorLockMode.Locked;
+
     }
 }

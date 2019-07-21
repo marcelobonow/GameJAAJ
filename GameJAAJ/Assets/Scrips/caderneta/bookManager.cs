@@ -10,12 +10,12 @@ public class bookManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("1"))
+        if(Input.GetButtonDown("page1"))
         {
             vitoria.SetActive(true);
             leticia.SetActive(false);
@@ -24,7 +24,7 @@ public class bookManager : MonoBehaviour
             ronaldo.SetActive(false);
             ricardo.SetActive(false);
         }
-        if (Input.GetButtonDown("2"))
+        if(Input.GetButtonDown("page2"))
         {
             vitoria.SetActive(false);
             leticia.SetActive(true);
@@ -33,7 +33,7 @@ public class bookManager : MonoBehaviour
             ronaldo.SetActive(false);
             ricardo.SetActive(false);
         }
-        if (Input.GetButtonDown("3"))
+        if(Input.GetButtonDown("page3"))
         {
             vitoria.SetActive(false);
             leticia.SetActive(false);
@@ -42,7 +42,7 @@ public class bookManager : MonoBehaviour
             ronaldo.SetActive(false);
             ricardo.SetActive(false);
         }
-        if (Input.GetButtonDown("4"))
+        if(Input.GetButtonDown("page4"))
         {
             vitoria.SetActive(false);
             leticia.SetActive(false);
@@ -51,7 +51,7 @@ public class bookManager : MonoBehaviour
             ronaldo.SetActive(false);
             ricardo.SetActive(false);
         }
-        if (Input.GetButtonDown("5"))
+        if(Input.GetButtonDown("page5"))
         {
             vitoria.SetActive(false);
             leticia.SetActive(false);
@@ -60,7 +60,7 @@ public class bookManager : MonoBehaviour
             ronaldo.SetActive(true);
             ricardo.SetActive(false);
         }
-        if (Input.GetButtonDown("6"))
+        if(Input.GetButtonDown("page6"))
         {
             vitoria.SetActive(false);
             leticia.SetActive(false);
@@ -68,7 +68,7 @@ public class bookManager : MonoBehaviour
             jefferson.SetActive(false);
             ronaldo.SetActive(false);
             ricardo.SetActive(true);
-        }         
+        }
     }
     public void Pagina1()
     {

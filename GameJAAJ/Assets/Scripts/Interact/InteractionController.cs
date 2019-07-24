@@ -46,11 +46,11 @@ public class InteractionController : MonoBehaviour
             if(!clicked)
                 firstMousePosition = Input.mousePosition;
             clicked = true;
-            rotationX += Input.GetAxis("Mouse X")*rotationSpeed*Mathf.Deg2Rad;
-            rotationY -= Input.GetAxis("Mouse Y")*rotationSpeed*Mathf.Deg2Rad;
 
-            var desiredRotation = Quaternion.Euler(rotationY, -rotationX, 0);
-            interactableObject.transform.rotation = desiredRotation;
+            Vector3 offset = (Input.mousePosition - firstMousePosition);
+            Vector3 deltaRotation = new Vector3(0, -offset.x, -offset.y);
+
+            interactableObject.transform.Rotate(deltaRotation * rotationSpeed, Space.World);
         }
         else
             clicked = false;

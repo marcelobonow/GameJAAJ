@@ -92,9 +92,9 @@ public class Interactor : MonoBehaviour
     {
         firstPersonCamera.gameObject.SetActive(!interacting);
         interactCamera.gameObject.SetActive(interacting);
-        characterController.enabled = !interacting;
+        characterController.enabled = !interacting && !UIManager.IsPaused();
         Cursor.visible = interacting;
-        Cursor.lockState = interacting ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.lockState = interacting && !UIManager.IsPaused() ? CursorLockMode.None : CursorLockMode.Locked;
 
     }
 }

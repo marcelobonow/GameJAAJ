@@ -6,8 +6,8 @@ using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-    [RequireComponent(typeof (CharacterController))]
-    [RequireComponent(typeof (AudioSource))]
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
@@ -17,7 +17,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -43,7 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
         // Use this for initialization
-        private void Start()
+        public void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -54,7 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+            m_MouseLook.Init(transform, m_Camera.transform);
         }
 
 
@@ -63,19 +63,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if(!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+            if(!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
+            if(!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
             }
@@ -109,11 +109,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
 
 
-            if (m_CharacterController.isGrounded)
+            if(m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump)
+                if(m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
@@ -143,13 +143,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void ProgressStepCycle(float speed)
         {
-            if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
+            if(m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
                              Time.fixedDeltaTime;
             }
 
-            if (!(m_StepCycle > m_NextStep))
+            if(!(m_StepCycle > m_NextStep))
             {
                 return;
             }
@@ -162,7 +162,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded)
+            if(!m_CharacterController.isGrounded)
             {
                 return;
             }
@@ -180,11 +180,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
-            if (!m_UseHeadBob)
+            if(!m_UseHeadBob)
             {
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+            if(m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -219,14 +219,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
-            if (m_Input.sqrMagnitude > 1)
+            if(m_Input.sqrMagnitude > 1)
             {
                 m_Input.Normalize();
             }
 
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
+            if(m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
             {
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
@@ -235,7 +235,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
 
@@ -243,12 +243,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             Rigidbody body = hit.collider.attachedRigidbody;
             //dont move the rigidbody if the character is on top of it
-            if (m_CollisionFlags == CollisionFlags.Below)
+            if(m_CollisionFlags == CollisionFlags.Below)
             {
                 return;
             }
 
-            if (body == null || body.isKinematic)
+            if(body == null || body.isKinematic)
             {
                 return;
             }

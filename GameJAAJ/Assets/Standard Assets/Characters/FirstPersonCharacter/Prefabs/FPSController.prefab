@@ -80,12 +80,13 @@ MonoBehaviour:
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
-    clampVerticalRotation: 1
+    clampVerticalRotation: 0
     MinimumX: -90
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
+    lockCursor: 0
+    Enabled: 1
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -341,7 +342,7 @@ MonoBehaviour:
   timeToHold: 0.25
   interactItemSpawnPoint: {fileID: 2709159071481383325}
   characterController: {fileID: 11400000}
-  interactionController: {fileID: 0}
+  interactionController: {fileID: 5876656508285954020}
   firstPersonCamera: {fileID: 2000000}
   interactCamera: {fileID: 1517410650570602731}
 --- !u!114 &7150873143296315820
@@ -543,7 +544,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7551545280301816415}
-  - component: {fileID: 5926710678053600270}
   m_Layer: 0
   m_Name: ItemPos
   m_TagString: Interactable
@@ -565,19 +565,6 @@ Transform:
   m_Father: {fileID: 3675807114830461732}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5926710678053600270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2709159071481383325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c52e9be6437e0e4d84ccdf96a6f4ec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
 --- !u!1 &6744919953218396548
 GameObject:
   m_ObjectHideFlags: 0
